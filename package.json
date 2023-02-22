@@ -1,0 +1,18 @@
+{
+  "name": "payment-iframe",
+  "version": "1.0.0",
+  "description": "String Payment Iframe App",
+  "mode": "module",
+  "repository": "git@github.com:String-xyz/payment-iframe.git",
+  "author": "String Technologies",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "build": "tsc && vite build --base=./",
+    "dev": "vite"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.5",
+    "vite": "^4.1.4"
+  }
+}
