@@ -50,7 +50,7 @@ const init = (style: any = defaultStyle) => {
 		publicKey: CHECKOUT_PK,
 		acceptedPaymentMethods: ["Visa", "Mastercard", "American Express", "Discover"],
 		cardTokenized: ckoEvents.onCardTokenized,
-		cardValidationChanged: ckoEvents.validateInfo,
+		cardValidationChanged: ckoEvents.OnValidationChanged,
 		paymentMethodChanged: ckoEvents.onVendorChanged,
 		style: style
 	});

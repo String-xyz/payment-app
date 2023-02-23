@@ -1,5 +1,5 @@
 import { Events, sendEvent } from './events';
-const validateInfo = (e: any) => {
+const OnValidationChanged = (e: any) => {
 	sendEvent(Events.CARD_VALIDATION_CHANGED,{valid: e.isValid})
 };
 
@@ -12,4 +12,4 @@ const onCardTokenized = async (e: any) => {
 	sendEvent(Events.CARD_TOKENIZED,data)
 };
 
-export { validateInfo, onVendorChanged, onCardTokenized}
+export { OnValidationChanged, onVendorChanged, onCardTokenized}

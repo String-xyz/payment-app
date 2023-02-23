@@ -10,6 +10,7 @@ export enum Events {
 	IFRAME_LOADED ='iframe_loaded',
 	IFRAME_READY = 'iframe_ready',
 	SUBMIT_CARD	= 'submit_card',
+	CARD_SUBMITTED = 'card_submitted',
 	CARD_TOKENIZED = 'card_tokenized',
 	CARD_TOKENIZE_FAILED = 'card_tokenize_failed',
 	CARD_VENDOR_CHANGED = 'card_vendor_changed',
