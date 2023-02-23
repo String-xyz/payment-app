@@ -8,7 +8,7 @@ const onVendorChanged = (e: any) => {
 	sendEvent(Events.CARD_VENDOR_CHANGED, {cardVendor: e.paymentMethod, accepted: e.isPaymentMethodAccepted})
 }
 
-const onCardSubmitted = async (e: any) => {
+const onCardSubmitted = async () => {
 	sendEvent(Events.CARD_SUBMITTED)
 };
 
