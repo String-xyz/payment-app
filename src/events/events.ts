@@ -7,7 +7,8 @@ export interface StringEvent<T = any> {
 
 export enum Events {
 	INIT_IFRAME = 'init_iframe',
-	IFRAME_READY = 'ready',
+	IFRAME_LOADED ='iframe_loaded',
+	IFRAME_READY = 'iframe_ready',
 	SUBMIT_CARD	= 'submit_card',
 	CARD_TOKENIZED = 'card_tokenized',
 	CARD_TOKENIZE_FAILED = 'card_tokenize_failed',

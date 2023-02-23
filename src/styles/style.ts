@@ -1,6 +1,6 @@
 export const defaultStyle = {
 	base: {
-		color: 'black',
+		color: 'gray',
 		fontSize: '18px',
 	},
 	autofill: {
@@ -30,7 +30,7 @@ export const defaultStyle = {
 
 /** the above css style object produces the following */
 /**
-.card-number {color: black;font-size: 18px;}
+.card-number {color: gray;font-size: 18px;}
 .card-number:-webkit-autofill {background-color: yellow;}
 .card-number--autofilled {background-color: yellow;}
 .card-number--hover {color: blue;}

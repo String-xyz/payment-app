@@ -1,17 +1,17 @@
 import { Events, sendEvent, ckoEvents, CHANNEL } from './events';
 import { defaultStyle } from './styles/style';
-const CHECKOUT_PK = "pk_test_8ac41c0d-fbcc-4ae3-a771-31ea533a2beb";
+const CHECKOUT_PK = import.meta.env.VITE_CHECKOUT_PUBLIC_KEY; 
 let checkout: any;
 
-export const start = async () => {
+export const start =  () => {
 	registerEvents();
-	console.info("iframe started");
-	sendEvent(Events.IFRAME_READY);
+	sendEvent(Events.IFRAME_LOADED);
 }
 
-export const registerEvents = async () => {
-	const eventHandler = async (e: any) => {
-		console.info("event recieved on iframe", e)
+export const registerEvents =  () => {
+	const eventHandler = (e: any) => {
+		// Filter Metamask events
+		if (e.data?.data?.name) return;
 		// we are already handling checkout events through registed callbacks
 		if (e.data?.type == "cko-msg") return;
 
@@ -34,9 +34,12 @@ export const registerEvents = async () => {
 }
 
 const submitCard = () => {
-	if (window.frames) {
+	// @ts-ignore
+	if (window.Frames) {
 		// @ts-ignore
 		window.Frames.submitCard();
+	} else { 
+	//TODO maybe notify that theres no iframe loaded
 	}
 }
 
@@ -52,7 +55,7 @@ const init = (style: any = defaultStyle) => {
 		style: style
 	});
 
-	//sendEvent(Events.IFRAME_READY);
+	sendEvent(Events.IFRAME_READY);
 }
 
 start();
