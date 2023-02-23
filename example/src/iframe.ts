@@ -14,11 +14,12 @@ export function setupIframe(element: HTMLDivElement) {
 			}
   }
 
-  iframe.src = "http://localhost:8081/"
+  iframe.src = "http://localhost:8081/" // iframe needs to be running
   iframe.style.width = '400px'
   iframe.style.height = '500px'
   element.appendChild(iframe);
   window.addEventListener('message', handleEvent);
+  
 }
 
 const sendEvent = (iframe:HTMLIFrameElement) => { 
