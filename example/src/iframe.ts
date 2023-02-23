@@ -1,15 +1,20 @@
 export function setupIframe(element: HTMLDivElement) {
   let iframe = document.createElement('iframe');
   const handleEvent = (e: any) => {
-    console.log("event recieved from iframe", e)
+    	// Filter Metamask events
+		if (e.data?.data?.name) return;
+		// Filter Checkout events
+		if (e.data?.type == "cko-msg") return;
+    
     const payload = JSON.parse(e.data);
 			const event = payload.event
-      if (payload.channel == "STRING_PAY" && event.eventName == "ready") {
+      console.info("event recieved from iframe", payload)
+      if (payload.channel == "STRING_PAY" && event.eventName == "iframe_loaded") {
           sendEvent(iframe);
 			}
   }
 
-  iframe.src = " http://localhost:8081/"
+  iframe.src = "http://localhost:8081/"
   iframe.style.width = '400px'
   iframe.style.height = '500px'
   element.appendChild(iframe);
