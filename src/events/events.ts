@@ -20,7 +20,7 @@ export enum Events {
 export const sendEvent = (eventName: string, data?: any) => {
 	const message = JSON.stringify({
 		channel: CHANNEL,
-		event: { eventName, data },
+		data: { eventName, data },
 	});
 	console.info("sending event", message)
 	window.parent.postMessage(message, '*');
