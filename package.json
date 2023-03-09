@@ -9,7 +9,7 @@
   "private": true,
   "scripts": {
     "build": "tsc && vite build --base=./",
-    "dev": "vite --port 8081"
+    "dev": "vite --port 4041 --host"
   },
   "devDependencies": {
     "typescript": "^4.9.5",
