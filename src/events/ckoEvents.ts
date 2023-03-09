@@ -1,7 +1,7 @@
 import { Events, sendEvent } from './events';
 
 const onValidationChanged = (e: any) => {
-	sendEvent(Events.CARD_VALIDATION_CHANGED,{valid: e.isValid})
+	sendEvent(Events.CARD_VALIDATION_CHANGED,{ valid: e.isValid })
 };
 
 const onCardTokenizationFailed = (e: any) => { 
@@ -9,7 +9,7 @@ const onCardTokenizationFailed = (e: any) => {
 }
 
 const onVendorChanged = (e: any) => {
-	sendEvent(Events.CARD_VENDOR_CHANGED, {cardVendor: e.paymentMethod, accepted: e.isPaymentMethodAccepted})
+	sendEvent(Events.CARD_VENDOR_CHANGED, { cardVendor: e.paymentMethod, accepted: e.isPaymentMethodAccepted })
 }
 
 const onCardSubmitted = async () => {
@@ -21,4 +21,4 @@ const onCardTokenized = async (e: any) => {
 	sendEvent(Events.CARD_TOKENIZED,data)
 };
 
-export { onValidationChanged,onCardSubmitted, onVendorChanged, onCardTokenized, onCardTokenizationFailed}
+export { onValidationChanged, onCardSubmitted, onVendorChanged, onCardTokenized, onCardTokenizationFailed }

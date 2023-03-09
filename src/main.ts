@@ -49,9 +49,9 @@ const init = (style: any = defaultStyle) => {
   checkout.init({
     publicKey: CHECKOUT_PK,
     acceptedPaymentMethods: ["Visa", "Mastercard", "American Express", "Discover"],
-    cardSubmitted:ckoEvents.onCardSubmitted, 
+    cardSubmitted: ckoEvents.onCardSubmitted,
     cardTokenized: ckoEvents.onCardTokenized,
-    cardTokenizationFailed:ckoEvents.onCardTokenizationFailed,
+    cardTokenizationFailed: ckoEvents.onCardTokenizationFailed,
     cardValidationChanged: ckoEvents.onValidationChanged,
     paymentMethodChanged: ckoEvents.onVendorChanged,
     style: style
