@@ -28,7 +28,7 @@ const eventHandler = (e: any) => {
       submitCard();
     }
   } catch (error) {
-    sendEvent("ERROR", error);
+    sendEvent("Parsing error", error);
     console.error(error);
   }
 }
@@ -40,11 +40,11 @@ const submitCard = () => {
 }
 
 const init = (style: any = defaultStyle) => {
+  sendEvent(Events.IFRAME_LOADED);
   // @ts-ignore
   checkout = window.Frames;
   // @ts-ignore
-  checkout.init(); // re-init to clear previous state
-  checkout.init({
+   checkout.init({
     publicKey: CHECKOUT_PK,
     acceptedPaymentMethods: ["Visa", "Mastercard", "American Express", "Discover"],
     cardSubmitted: ckoEvents.onCardSubmitted,
