@@ -35,17 +35,15 @@ const eventHandler = (e: any) => {
 
 const submitCard = () => {
   // @ts-ignore
-  if (window.Frames) {
-    // @ts-ignore
-    window.Frames.submitCard();
-  } else { 
-    //TODO maybe notify that theres no iframe loaded
-  }
+  checkout.submitCard();
+  checkout.enableSubmitForm();
 }
 
 const init = (style: any = defaultStyle) => {
   // @ts-ignore
   checkout = window.Frames;
+  // @ts-ignore
+  checkout.init(); // re-init to clear previous state
   checkout.init({
     publicKey: CHECKOUT_PK,
     acceptedPaymentMethods: ["Visa", "Mastercard", "American Express", "Discover"],

@@ -9,7 +9,9 @@ test-envvars:
 build: test-envvars
 	npm run build
 
-all: build
+push: test-envvars
 	aws s3 cp --recursive dist/ s3://${${env}_S3_BUCKET} && aws cloudfront create-invalidation \
 	--distribution-id ${${env}_DISTRIBUTION_ID} \
 	--paths "/*"
+
+all: build push
