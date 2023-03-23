@@ -25,7 +25,7 @@ const eventHandler = (e: any) => {
       init(event.data);
     }
     if (payload.channel == CHANNEL && event.eventName == Events.SUBMIT_CARD) {
-      submitCard();
+      submitCard(event.data);
     }
   } catch (error) {
     sendEvent("Parsing error", error);
@@ -33,8 +33,9 @@ const eventHandler = (e: any) => {
   }
 }
 
-const submitCard = () => {
+const submitCard = (cardholder: any) => {
   // @ts-ignore
+  checkout.cardholder = cardholder;
   checkout.submitCard();
   checkout.enableSubmitForm();
 }
