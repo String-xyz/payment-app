@@ -25,28 +25,27 @@ const eventHandler = (e: any) => {
       init(event.data);
     }
     if (payload.channel == CHANNEL && event.eventName == Events.SUBMIT_CARD) {
-      submitCard();
+      submitCard(event.data);
     }
   } catch (error) {
-    sendEvent("ERROR", error);
+    sendEvent("Parsing error", error);
     console.error(error);
   }
 }
 
-const submitCard = () => {
+const submitCard = (cardholder: any) => {
   // @ts-ignore
-  if (window.Frames) {
-    // @ts-ignore
-    window.Frames.submitCard();
-  } else { 
-    //TODO maybe notify that theres no iframe loaded
-  }
+  checkout.cardholder = cardholder;
+  checkout.submitCard();
+  checkout.enableSubmitForm();
 }
 
 const init = (style: any = defaultStyle) => {
+  sendEvent(Events.IFRAME_LOADED);
   // @ts-ignore
   checkout = window.Frames;
-  checkout.init({
+  // @ts-ignore
+   checkout.init({
     publicKey: CHECKOUT_PK,
     acceptedPaymentMethods: ["Visa", "Mastercard", "American Express", "Discover"],
     cardSubmitted: ckoEvents.onCardSubmitted,

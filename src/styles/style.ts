@@ -1,6 +1,6 @@
 export const defaultStyle = {
 	base: {
-		color: 'gray',
+		color: 'black',
 		fontSize: '18px',
 	},
 	autofill: {
@@ -20,10 +20,10 @@ export const defaultStyle = {
 	},
 	placeholder: {
 		base: {
-			color: 'gray',
+			color: 'black',
 		},
 		focus: {
-			border: 'solid 1px blue',
+			border: 'none'
 		},
 	},
 }
