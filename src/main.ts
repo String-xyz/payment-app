@@ -1,62 +1,8 @@
-import { Events, sendEvent, ckoEvents, CHANNEL } from './events';
-import { defaultStyle } from './styles/style';
-const CHECKOUT_PK = import.meta.env.VITE_CHECKOUT_PUBLIC_KEY; 
-let checkout: any;
+import './app.css'
+import App from './App.svelte'
 
-export const start =  () => {
-  registerEvents();
-  sendEvent(Events.IFRAME_LOADED);
-}
+const app = new App({
+  target: document.getElementById('app'),
+})
 
-export const registerEvents =  () => {
-  window.addEventListener('message', eventHandler);
-}
-
-const eventHandler = (e: any) => {
-  // Filter Metamask events
-  if (e.data?.data?.name) return;
-  // we are already handling checkout events through registed callbacks
-  if (e.data?.type == "cko-msg") return;
-  try {
-    const payload = JSON.parse(e.data);
-    const event = payload.data;
-
-    if (payload.channel == CHANNEL && event.eventName == Events.INIT_IFRAME) {
-      init(event.data);
-    }
-    if (payload.channel == CHANNEL && event.eventName == Events.SUBMIT_CARD) {
-      submitCard(event.data);
-    }
-  } catch (error) {
-    sendEvent("Parsing error", error);
-    console.error(error);
-  }
-}
-
-const submitCard = (cardholder: any) => {
-  // @ts-ignore
-  checkout.cardholder = cardholder;
-  checkout.submitCard();
-  checkout.enableSubmitForm();
-}
-
-const init = (style: any = defaultStyle) => {
-  sendEvent(Events.IFRAME_LOADED);
-  // @ts-ignore
-  checkout = window.Frames;
-  // @ts-ignore
-   checkout.init({
-    publicKey: CHECKOUT_PK,
-    acceptedPaymentMethods: ["Visa", "Mastercard", "American Express", "Discover"],
-    cardSubmitted: ckoEvents.onCardSubmitted,
-    cardTokenized: ckoEvents.onCardTokenized,
-    cardTokenizationFailed: ckoEvents.onCardTokenizationFailed,
-    cardValidationChanged: ckoEvents.onValidationChanged,
-    paymentMethodChanged: ckoEvents.onVendorChanged,
-    style: style
-  });
-
-  sendEvent(Events.IFRAME_READY);
-}
-
-start();
+export default app
