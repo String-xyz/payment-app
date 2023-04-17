@@ -23,3 +23,9 @@ export const initCheckout = (style: any) => {
     }
   });
 }
+
+//TODO: validate style
+export const setStyle = (style: any) => {
+  initCheckout(style);
+}
+
