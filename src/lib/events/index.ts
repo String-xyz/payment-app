@@ -11,6 +11,7 @@ export interface StringEvent<T = any> {
 export enum Events {
     SET_STYLE = 'set_style',
     IFRAME_LOADED ='iframe_loaded',
+    FINGERPRINT = 'fingerprint',
     IFRAME_READY = 'iframe_ready',
     SUBMIT_CARD	= 'submit_card',
     CARD_SUBMITTED = 'card_submitted',
