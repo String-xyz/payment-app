@@ -12,6 +12,7 @@ export const initCheckout = (style: any) => {
   checkout.init({
     publicKey: PUBLIC_KEY,
     style,
+    acceptedPaymentMethods: ["Visa", "Mastercard", "American Express", "Discover"],
     localization: {
       cardNumberPlaceholder: '1234 5678 1234 5678',
       expiryMonthPlaceholder: 'MM',
