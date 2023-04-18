@@ -26,11 +26,11 @@ export const sendEvent = (eventName: string, data?: any) => {
     channel: CHANNEL,
     data: { eventName, data },
   });
+
   console.info("sending event", message)
   window.parent.postMessage(message, '*');
-  // @ts-ignore
+ 
   if (window.vuplex) {  
-    // @ts-ignore
     window.vuplex.postMessage(message);
   }
 }
@@ -63,13 +63,10 @@ export const registerCheckoutEvents = () => {
 }
 
 export const registerForUnityEvents = () => {
-  // @ts-ignore
   if (window.vuplex) {
-    // @ts-ignore
     window.vuplex.addEventListener("message", handleEvents);
   } else { 
     window.addEventListener("vuplexready", () => { 
-      //@ts-ignore
       window.vuplex.addEventListener("message",handleEvents);
     })
   }
