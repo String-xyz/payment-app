@@ -1,5 +1,7 @@
-import { updateValidation, updateOneValidation, cardValid } from '../store';
+import { get } from 'svelte/store';
+import { updateOneValidation, cardValid } from '../store';
 import { submitCard, setStyle } from '../checkout';
+import { cardholder } from '../store';
 
 export const CHANNEL = "STRING_PAY";
 export interface StringEvent<T = any> {
@@ -84,7 +86,7 @@ const handleEvents = (e) => {
     }
 
     if (payload.channel == CHANNEL && event.eventName == Events.SUBMIT_CARD) {
-      submitCard();
+      submitCard(get(cardholder));
     }
 
   } catch (error) {
