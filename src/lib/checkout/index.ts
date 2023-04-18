@@ -1,4 +1,4 @@
-const PUBLIC_KEY = <string>import.meta.env.VITE_CHECKOUT_PUBLIC_KEY;
+const PUBLIC_KEY = import.meta.env.VITE_CHECKOUT_PUBLIC_KEY;
 
 export const checkout = window.Frames;
 
