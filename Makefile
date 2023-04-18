@@ -7,7 +7,7 @@ test-envvars:
 	@[ "${env}" ] || ( echo "env var is not set"; exit 1 )
 
 build: test-envvars
-	npm run build
+	yarn build
 
 push: test-envvars
 	aws s3 cp --recursive dist/ s3://${${env}_S3_BUCKET} && aws cloudfront create-invalidation \
