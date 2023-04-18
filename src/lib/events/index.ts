@@ -1,7 +1,6 @@
 import { get } from 'svelte/store';
-import { updateOneValidation, cardValid } from '../store';
+import { updateOneValidation, cardValid, cardholder } from '../store';
 import { submitCard, setStyle } from '../checkout';
-import { cardholder } from '../store';
 
 export const CHANNEL = "STRING_PAY";
 export interface StringEvent<T = any> {
