@@ -3,7 +3,7 @@ data "aws_route53_zone" "default" {
 }
 
 resource "aws_route53_record" "web_app" {
-  name    = "payment-iframe"
+  name    = local.web_domain
   type    = "A"
   zone_id = data.aws_route53_zone.default.zone_id
 
