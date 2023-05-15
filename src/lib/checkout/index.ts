@@ -7,10 +7,10 @@ const PROD_PUBLIC_KEY = import.meta.env.VITE_PROD_CHECKOUT_PUBLIC_KEY;
 export const checkout = window.Frames;
 
 const getCheckoutKey = () => {
-  if (get(environment) === "sandbox" || get(environment) === "dev") {
-    return DEV_PUBLIC_KEY;
-  } else {
+  if (get(environment) === "prod") {
     return PROD_PUBLIC_KEY;
+  } else {
+    return DEV_PUBLIC_KEY;
   }
 };
 

@@ -1,6 +1,5 @@
 locals {
   region            = "us-west-2"
-  root_domain       = "string-api.xyz"
   web_origin_id     = "payment-iframe"
   web_bucket_name   = "payment-iframe.string-api.xyz"
   web_domain        = "payment-iframe.string-api.xyz"

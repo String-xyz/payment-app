@@ -1,5 +1,5 @@
 data "aws_route53_zone" "default" {
-  name = local.root_domain
+  name = local.web_domain
 }
 
 resource "aws_route53_record" "web_app" {
