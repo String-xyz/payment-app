@@ -1,5 +1,5 @@
 import { get } from "svelte/store";
-import { updateOneValidation, cardValid, cardholder } from "../store";
+import { updateOneValidation, cardValid, cardholder, appType } from "../store";
 import { submitCard, setStyle } from "../checkout";
 
 export const CHANNEL = "STRING_PAY";
@@ -27,10 +27,12 @@ export const sendEvent = (eventName: string, data?: any) => {
     channel: CHANNEL,
     data: { eventName, data },
   });
-
-  console.info("sending event", message);
-  window.parent.postMessage(message, "*");
-
+  // send to parent if in sdk mode
+  if (get(appType) == "sdk") {
+    window.parent.postMessage(message, "*");
+    return;
+  }
+  // send to unity if in unity mode which is the default
   if (window.vuplex) {
     window.vuplex.postMessage(message);
   }
@@ -67,10 +69,18 @@ export const registerCheckoutEvents = () => {
   );
 };
 
-export const registerForUnityEvents = () => {
+export const registerForEvents = () => {
+  // register for event if in sdk mode
+  if (get(appType) == "sdk") {
+    window.parent.addEventListener("message", handleEvents);
+    return;
+  }
+
+  // register for unity events if in unity mode
   if (window.vuplex) {
     window.vuplex.addEventListener("message", handleEvents);
   } else {
+    // vuplex is not ready yet, wait for it to be ready and then register
     window.addEventListener("vuplexready", () => {
       window.vuplex.addEventListener("message", handleEvents);
     });
@@ -95,10 +105,4 @@ const handleEvents = (e) => {
     sendEvent("Parsing error", error);
     console.error(error);
   }
-};
-
-// register for unity and parent events
-export const registerForEvents = () => {
-  window.addEventListener("message", handleEvents, false);
-  registerForUnityEvents();
 };

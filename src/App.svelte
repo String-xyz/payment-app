@@ -5,7 +5,7 @@
   import { defaultStyle } from './resetStyle.ts';
   import { initCheckout } from './lib/checkout';
   import { getFingerprintData } from './lib/services';
-  import { environment } from './lib/store';
+  import { environment, appType } from './lib/store';
   
   // initialize checkout when frames are ready
   const framesLoaded = (event) => {
@@ -25,6 +25,12 @@
    if (params.has("env")) {
       const env = params.get("env");
       environment.set(env);
+    }
+
+    // lets get the app type so we can render the correct module
+    if (params.has("appType")) {
+      const app = params.get("appType");
+      appType.set(app);
     }
   }
 
