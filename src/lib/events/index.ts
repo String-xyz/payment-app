@@ -28,7 +28,7 @@ export const sendEvent = (eventName: string, data?: any) => {
     data: { eventName, data },
   });
   // send to parent if in sdk mode
-  if (get(appType) == "sdk") {
+  if (get(appType) == "web") {
     window.parent.postMessage(message, "*");
     return;
   }
@@ -71,7 +71,7 @@ export const registerCheckoutEvents = () => {
 
 export const registerForEvents = () => {
   // register for event if in sdk mode
-  if (get(appType) == "sdk") {
+  if (get(appType) == "web") {
     window.parent.addEventListener("message", handleEvents);
     return;
   }
