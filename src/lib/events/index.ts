@@ -72,7 +72,7 @@ export const registerCheckoutEvents = () => {
 export const registerForEvents = () => {
   // register for event if in sdk mode
   if (get(appType) == "web") {
-    window.parent.addEventListener("message", handleEvents);
+    window.addEventListener("message", handleEvents);
     return;
   }
 
