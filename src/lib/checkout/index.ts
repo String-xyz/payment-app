@@ -1,5 +1,5 @@
 import { get } from "svelte/store";
-import { environment } from "../store";
+import { environment, styles } from "../store";
 
 const DEV_PUBLIC_KEY = import.meta.env.VITE_DEV_CHECKOUT_PUBLIC_KEY;
 const PROD_PUBLIC_KEY = import.meta.env.VITE_PROD_CHECKOUT_PUBLIC_KEY;
@@ -39,7 +39,7 @@ export const initCheckout = (style: any) => {
   });
 };
 
-//TODO: validate style
 export const setStyle = (style: any) => {
-  initCheckout(style);
+  styles.set(style);
+  initCheckout(style.PCIInnerElements);
 };
