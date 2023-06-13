@@ -7,6 +7,7 @@ export const cardValid = writable(false);
 export const framesLoaded = writable(false);
 export const cardholder = writable("");
 export const environment = writable("sandbox");
+export const appType = writable("unity");
 
 export const updateValidation = ({ cardNumber, cvv, expiryDate }) => {
   cardNumberValid.set(cardNumber);
