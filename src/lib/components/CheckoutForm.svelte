@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount, onDestroy, createEventDispatcher } from "svelte";
   import CheckoutInput from './CheckoutInput.svelte';
-  import { cardNumberValid, expiryValid, cvvValid, updateValidation, cardholder } from '../store';
+  import { cardNumberValid, expiryValid, cvvValid, updateValidation, cardholder, styles } from '../store';
   
   const dispatch = createEventDispatcher();
   
@@ -12,22 +12,14 @@
 
 </script>
 
-<div class="h-full w-full mt-10">
-  <div class="px-8 pb-6">
+<div class={$styles.container}>
     <div>
-      <div class="space-y-4">
+      <div class={$styles.spacer}>
         <!-- Name on Card -->
-        <div>
-          <label class="block text-sm mb-1 text-white" for="card-name">Name on Card</label>
-          <input id="card-name" class="text-sm text-white
-          bg-transparent border rounded leading-5 py-2 px-3 focus:outline-none focus:border-gray-300
-          border-gray-200 hover:border-gray-300
-          shadow-sm placeholder-white w-full"
-          type="text" placeholder="Name on card" bind:value={$cardholder} />
-        </div>
+        <CheckoutInput elementId="card-name" frameName="card-name" labelName="Name on card" valid={$cardNumberValid} cardholder={$cardholder} />
         <!-- Card Number -->
         <CheckoutInput elementId="card-number" frameName="card-number-frame" labelName="Card number" valid={$cardNumberValid} />
-          <div class="flex flex-row gap-x-5">
+          <div class={$styles.CVVExpiryContainer}>
             <!-- Expiry -->
             <CheckoutInput elementId="card-expiry" frameName="expiry-date-frame" labelName="Expiration date" valid={$expiryValid}/>
             <!-- CVC -->
@@ -35,5 +27,4 @@
           </div>
       </div>
     </div>
-  </div>
 </div>

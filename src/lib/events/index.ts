@@ -95,6 +95,7 @@ const handleEvents = (e) => {
     const event = payload.data;
 
     if (payload.channel == CHANNEL && event.eventName == Events.SET_STYLE) {
+      if (event.data == null) return;
       setStyle(event.data);
     }
 
