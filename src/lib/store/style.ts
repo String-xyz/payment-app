@@ -1,4 +1,14 @@
 import { writable } from "svelte/store";
+import {webStyle, unityStyle} from "../../resetStyle";
+
+export const setStyleApp = (app: string) => {
+  if (app === "web") { 
+   styles.set(webStyle); 
+  }
+  else if (app === "unity") {
+    styles.set(unityStyle);
+  }
+};
 
 export const styles = writable({
   PCIInnerElements: {
