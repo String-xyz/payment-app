@@ -108,7 +108,7 @@ export const webStyle = {
           bg-transparent border rounded leading-5 py-2 px-3 
           focus:outline-none focus:border-gray-300 
           border-[#D8DDE2] hover:border-gray-300
-          h-10 shadow-sm placeholder-black w-full`,
+          h-10 shadow-sm placeholder-[#3C5370] w-full`,
 
   error: `text-red-500 outline outline-1 
     min-h-8 h-auto outline-rose-500 rounded m-1 
