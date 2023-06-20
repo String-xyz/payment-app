@@ -73,7 +73,7 @@ export const webStyle = {
       color: "none",
     },
     valid: {
-      color: "#3C5370",
+      color: "#0C1116",
     },
     invalid: {
       color: "#3C5370",

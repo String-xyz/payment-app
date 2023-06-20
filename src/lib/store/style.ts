@@ -1,12 +1,14 @@
 import { writable } from "svelte/store";
 import {webStyle, unityStyle} from "../../resetStyle";
-
+import {initCheckout} from "../checkout";
 export const setStyleApp = (app: string) => {
   if (app === "web") { 
-   styles.set(webStyle); 
+   styles.set(webStyle);
+    initCheckout(webStyle.PCIInnerElements);
   }
   else if (app === "unity") {
     styles.set(unityStyle);
+    initCheckout(unityStyle.PCIInnerElements);
   }
 };
 
