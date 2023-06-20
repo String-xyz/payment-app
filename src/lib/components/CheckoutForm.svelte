@@ -1,7 +1,7 @@
 <script lang="ts">
   import { onMount, onDestroy, createEventDispatcher } from "svelte";
   import CheckoutInput from './CheckoutInput.svelte';
-  import { cardNumberValid, expiryValid, cvvValid, updateValidation, cardholder, styles } from '../store';
+  import { cardNumberValid, expiryValid, cvvValid, updateValidation, cardholder,cardholderValid, styles } from '../store';
   
   const dispatch = createEventDispatcher();
   
@@ -16,7 +16,7 @@
     <div>
       <div class={$styles.spacer}>
         <!-- Name on Card -->
-        <CheckoutInput elementId="card-name" frameName="card-name" labelName="Name on card" valid={$cardNumberValid} cardholder={$cardholder} />
+        <CheckoutInput elementId="card-name" frameName="card-name" labelName="Name on card" valid={$cardholderValid} cardholder={$cardholder} />
         <!-- Card Number -->
         <CheckoutInput elementId="card-number" frameName="card-number-frame" labelName="Card number" valid={$cardNumberValid} />
           <div class={$styles.CVVExpiryContainer}>

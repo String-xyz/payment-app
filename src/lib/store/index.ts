@@ -1,5 +1,7 @@
 import { writable } from "svelte/store";
+import {setStyleApp} from "./style";
 
+export const cardholderValid = writable(true);
 export const cardNumberValid = writable(true);
 export const expiryValid = writable(true);
 export const cvvValid = writable(true);
@@ -41,4 +43,9 @@ export const updateOneValidation = ({ element, isValid, isEmpty }) => {
 
     expiryValid.set(isValid);
   }
+};
+
+export const setAppType = (app:string) => {
+  appType.set(app);
+  setStyleApp(app);
 };
