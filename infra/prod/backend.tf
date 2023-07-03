@@ -24,13 +24,3 @@ terraform {
     region         = "us-west-2"
   }
 }
-
-data "terraform_remote_state" "vpc" {
-  backend = "s3"
-  config = {
-    region = local.backend_region
-    bucket = local.remote_state_bucket
-    key    = local.vpc_remote_state_key
-  }
-}
-

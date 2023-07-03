@@ -1,5 +1,5 @@
 resource "aws_cloudfront_origin_access_identity" "web" {
-  comment = "${local.env} string payment-iframe web origin"
+  comment = "${local.env} string payment-app web origin"
 }
 
 resource "aws_cloudfront_distribution" "web_app" {
