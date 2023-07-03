@@ -1,7 +1,6 @@
 export
 AWS_PROFILE=${env}-string
-dev_S3_BUCKET=payment-iframe.dev.string-api.xyz
-prod_S3_BUCKET=payment-iframe.string-api.xyz
+prod_S3_BUCKET=payment-app.string-api.xyz
 dev_DISTRIBUTION_ID=EREMI7QXDZLML
 prod_DISTRIBUTION_ID=E30Z8G0TIO2747
 test-envvars:
