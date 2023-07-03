@@ -43,6 +43,10 @@ export const registerCheckoutEvents = () => {
     window.Frames.Events.CARD_VALIDATION_CHANGED,
     (event) => {
       cardValid.set(event.isValid);
+      const data = {
+        ...event.isElementValid,
+        isValid: event.isValid
+      }
       sendEvent(Events.CARD_VALIDATION_CHANGED, event.isElementValid);
     }
   );
