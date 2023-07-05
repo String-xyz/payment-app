@@ -20,7 +20,7 @@ module "web_app" {
   aws_region  = "us-east-1"
   zone_id     = data.aws_route53_zone.default.zone_id
   tags = {
-    Name        = "web-payment-iframe-certificate"
+    Name        = "web-payment-app-certificate"
     Environment = local.env
   }
 }
