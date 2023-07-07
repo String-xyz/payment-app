@@ -30,6 +30,16 @@
       const app = params.get("appType");
       setAppType(app);
     }
+
+    if (params.has("setStyle")) {
+      const styleString = params.get("setStyle");
+      try {
+        const styleJSON = JSON.parse(decodeURIComponent(styleString));
+        styles.set(styleJSON);
+      } catch (error) {
+        console.error("Error while parsing 'setStyle' parameter: ", error);
+      }
+    }
   }
 
 </script>
