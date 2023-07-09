@@ -7,7 +7,8 @@
   import { environment, setAppType, styles } from './lib/store';
 
   const framesLoaded = (event) => {
-    initCheckout(styles.PCIInnerElements);
+    initCheckout($styles.PCIInnerElements);
+    sendEvent(Events.IFRAME_LOADED, "string-payment-frame");
   }
 
   onMount(async () => {
@@ -28,6 +29,16 @@
     if (params.has("appType")) {
       const app = params.get("appType");
       setAppType(app);
+    }
+
+    if (params.has("setStyle")) {
+      const styleString = params.get("setStyle");
+      try {
+        const styleJSON = JSON.parse(decodeURIComponent(styleString));
+        styles.set(styleJSON);
+      } catch (error) {
+        console.error("Error while parsing 'setStyle' parameter: ", error);
+      }
     }
   }
 
